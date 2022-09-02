@@ -1,0 +1,33 @@
+buildscript {
+    ext {
+        protobufVersion = '3.21.5'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'com.google.protobuf' version '0.8.19'
+    id 'application'
+}
+
+group 'com.aditya.project'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // *** Protobuf ***
+    // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java
+    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: protobufVersion
+
+    // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java-util
+    implementation group: 'com.google.protobuf', name: 'protobuf-java-util', version: protobufVersion
+}
+
+protobuf {
+    protoc { artifact = "com.google.protobuf:protoc:${protobufVersion}" }
+}
+
+mainClassName = 'com.aditya.project.protobuf.SimpleMain'
